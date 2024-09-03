@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "c358935f-e37c-41d2-8e64-9b4ba0da0e3c",
+		"name": "Epic road trip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31863584",
+		"_collection_link": "https://solar-comet-667031.postman.co/workspace/Roadtrip~3a83233f-17ee-4e57-add8-7a62dc3f09c0/collection/31863584-c358935f-e37c-41d2-8e64-9b4ba0da0e3c?action=share&source=collection_link&creator=31863584"
+	},
+	"item": [
+		{
+			"name": "GoogleMaps",
+			"item": [
+				{
+					"name": "getLocationFromAddress",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/google_api/location/20 place salvador allende villeneuve d'ascq",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"google_api",
+								"location",
+								"20 place salvador allende villeneuve d'ascq"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSuggestionsFromLocation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/google_api/searchNearby/bar/50.6195247,3.130777/5000",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"google_api",
+								"searchNearby",
+								"bar",
+								"50.6195247,3.130777",
+								"5000"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Routes google map pour avoir les suggestion :\n\n\\- Recupéré la location à partir de l'input texte\n\n\\- A patir des coordonées envoyé, voir les suggestion"
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "getuserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/profile/660c04ed8e169534cc027793",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"profile",
+								"660c04ed8e169534cc027793"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\":\"Notest@gmail.com\"\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/profile/660c04ed8e169534cc027793",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"profile",
+								"660c04ed8e169534cc027793"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/profile/660c04ed8e169534cc027793",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"profile",
+								"660c04ed8e169534cc027793"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LoginController",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"charles\",\r\n      \"lastname\":\"test\",\r\n        \"mail\":\"test@gmail.com\",\r\n          \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mail\":\"test@gmail.com\",\r\n\"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Journey",
+			"item": [
+				{
+					"name": "GetAllJourney",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/journey",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateJourney",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"trajet boulot\",\r\n    \"departure\" : \"30.56890\",\r\n    \"arrival\" : \"15.48540\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/journey",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJourneyById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/journey/6622e750c7362f3c98405e10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journey",
+								"6622e750c7362f3c98405e10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateJourneyById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"new title\",\r\n    \"departure\" : \"50.00000\",\r\n    \"arrival\" : \"40.00000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/journey/662570f9a002a5da45df67e9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journey",
+								"662570f9a002a5da45df67e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteJourneyById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/journey/662570f9a002a5da45df67e9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journey",
+								"662570f9a002a5da45df67e9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Suggestion",
+			"item": [
+				{
+					"name": "getAllSuggestions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/suggestion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"suggestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateSuggestion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPlace\": \"123\",\r\n    \"lon\": \"30.2000\",\r\n    \"lat\": \"20.00000\",\r\n    \"name\": \"bar\",\r\n    \"type\": \"bar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/suggestion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"suggestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSuggestionById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/suggestion/6622e8e8c7362f3c98405e19",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"suggestion",
+								"6622e8e8c7362f3c98405e19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSuggestionById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"champagne\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/suggestion/6622e8e8c7362f3c98405e19",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"suggestion",
+								"6622e8e8c7362f3c98405e19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSuggestionById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/suggestion/6622ee42baee1f052e571bc2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"suggestion",
+								"6622ee42baee1f052e571bc2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "savedTrips",
+			"item": [
+				{
+					"name": "getSavedTripsByUserIdAndJourneyId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/savedTrip/66150685c583d49d94785765/6622f80a7abf29b3ca47ba9e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"savedTrip",
+								"66150685c583d49d94785765",
+								"6622f80a7abf29b3ca47ba9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSavedTripByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/savedTrip/66150685c583d49d94785765",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"savedTrip",
+								"66150685c583d49d94785765"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSavedTrip",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/savedTrip/6622ecc7baee1f052e571bb9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"savedTrip",
+								"6622ecc7baee1f052e571bb9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllSavedTrips",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/savedTrip",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"savedTrip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateSavedTrip",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"66150685c583d49d94785765\",\r\n    \"journeyId\": \"6622f8507abf29b3ca47baa8\",\r\n    \"suggestionId\" :\"6622f8247abf29b3ca47baa2\"\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/savedTrip",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"savedTrip"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

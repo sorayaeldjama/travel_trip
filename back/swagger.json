@@ -1,0 +1,492 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation RoadTrip API",
+        "version": "1.0.0",
+        "description": "Description des API"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "Serveur local"
+        }
+    ],
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "summary": "Se connecter",
+                "description": "Connectez-vous à votre compte.",
+                "responses": {
+                    "200": {
+                        "description": "Connexion réussie"
+                    },
+                    "400": {
+                        "description": "Mauvaise requête"
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "summary": "S'inscrire",
+                "description": "Créez un nouveau compte utilisateur.",
+                "responses": {
+                    "200": {
+                        "description": "Inscription réussie"
+                    },
+                    "400": {
+                        "description": "Mauvaise requête"
+                    }
+                }
+            }
+        },
+        "/api/google/location/{query}": {
+            "get": {
+                "summary": "Obtenir la localisation à partir de l'adresse",
+                "description": "Récupère la localisation à partir de l'adresse fournie.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Adresse à rechercher."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Adresse non trouvée"
+                    }
+                }
+            }
+        },
+        "/api/google/search_nearby/travel/{location}/{radius}": {
+            "get": {
+                "summary": "Obtenir des suggestions de voyage à proximité",
+                "description": "Récupère des suggestions de voyage à proximité de l'emplacement spécifié.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "location",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Emplacement de recherche."
+                    },
+                    {
+                        "in": "path",
+                        "name": "radius",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "description": "Rayon de recherche en mètres."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucune suggestion trouvée"
+                    }
+                }
+            }
+        },
+        "/api/journey": {
+            "post": {
+                "summary": "Créer un nouveau voyage",
+                "description": "Crée un nouveau voyage.",
+                "responses": {
+                    "200": {
+                        "description": "Voyage créé avec succès"
+                    },
+                    "400": {
+                        "description": "Mauvaise requête"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Obtenir tous les voyages",
+                "description": "Récupère la liste de tous les voyages enregistrés.",
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucun voyage trouvé"
+                    }
+                }
+            }
+        },
+        "/api/journey/{journeyId}": {
+            "get": {
+                "summary": "Obtenir un voyage par ID",
+                "description": "Récupère les détails d'un voyage par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "journeyId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID du voyage à récupérer."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Voyage non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Mettre à jour un voyage par ID",
+                "description": "Met à jour les détails d'un voyage par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "journeyId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID du voyage à mettre à jour."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Voyage non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Supprimer un voyage par ID",
+                "description": "Supprime un voyage par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "journeyId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID du voyage à supprimer."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Voyage supprimé avec succès"
+                    },
+                    "404": {
+                        "description": "Voyage non trouvé"
+                    }
+                }
+            }
+        },
+        "/api/saved-trip": {
+            "post": {
+                "summary": "Créer un nouveau voyage sauvegardé",
+                "description": "Crée un nouveau voyage sauvegardé.",
+                "responses": {
+                    "200": {
+                        "description": "Voyage sauvegardé créé avec succès"
+                    },
+                    "400": {
+                        "description": "Mauvaise requête"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Obtenir tous les voyages sauvegardés",
+                "description": "Récupère la liste de tous les voyages sauvegardés.",
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucun voyage sauvegardé trouvé"
+                    }
+                }
+            }
+        },
+        "/api/saved-trip/{userId}": {
+            "get": {
+                "summary": "Obtenir les voyages sauvegardés par utilisateur",
+                "description": "Récupère les voyages sauvegardés par utilisateur.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de l'utilisateur pour lequel récupérer les voyages sauvegardés."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucun voyage sauvegardé trouvé pour cet utilisateur"
+                    }
+                }
+            }
+        },
+        "/api/saved-trip/{userId}/{journeyId}": {
+            "get": {
+                "summary": "Obtenir les voyages sauvegardés par utilisateur et voyage ID",
+                "description": "Récupère les voyages sauvegardés par utilisateur et voyage ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de l'utilisateur."
+                    },
+                    {
+                        "in": "path",
+                        "name": "journeyId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID du voyage."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucun voyage sauvegardé trouvé pour cet utilisateur et cet ID de voyage"
+                    }
+                }
+            }
+        },
+        "/api/saved-trip/{savedTripId}": {
+            "delete": {
+                "summary": "Supprimer un voyage sauvegardé par ID",
+                "description": "Supprime un voyage sauvegardé par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "savedTripId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID du voyage sauvegardé à supprimer."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Voyage sauvegardé supprimé avec succès"
+                    },
+                    "404": {
+                        "description": "Voyage sauvegardé non trouvé"
+                    }
+                }
+            }
+        },
+        "/api/suggestion": {
+            "post": {
+                "summary": "Créer une nouvelle suggestion",
+                "description": "Crée une nouvelle suggestion.",
+                "responses": {
+                    "200": {
+                        "description": "Suggestion créée avec succès"
+                    },
+                    "400": {
+                        "description": "Mauvaise requête"
+                    }
+                }
+            },
+            "get": {
+                "summary": "Obtenir toutes les suggestions",
+                "description": "Récupère la liste de toutes les suggestions enregistrées.",
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucune suggestion trouvée"
+                    }
+                }
+            }
+        },
+        "/api/suggestion/{suggestionId}": {
+            "get": {
+                "summary": "Obtenir une suggestion par ID",
+                "description": "Récupère les détails d'une suggestion par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "suggestionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de la suggestion à récupérer."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Suggestion non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Mettre à jour une suggestion par ID",
+                "description": "Met à jour les détails d'une suggestion par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "suggestionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de la suggestion à mettre à jour."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Suggestion non trouvée"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Supprimer une suggestion par ID",
+                "description": "Supprime une suggestion par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "suggestionId",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de la suggestion à supprimer."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Suggestion supprimée avec succès"
+                    },
+                    "404": {
+                        "description": "Suggestion non trouvée"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "summary": "Obtenir tous les utilisateurs",
+                "description": "Récupère la liste de tous les utilisateurs enregistrés.",
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Aucun utilisateur trouvé"
+                    }
+                }
+            }
+        },
+        "/api/user/profile/{id}": {
+            "get": {
+                "summary": "Obtenir l'utilisateur par ID",
+                "description": "Récupère les détails de l'utilisateur par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de l'utilisateur à récupérer."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Utilisateur non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Mettre à jour l'utilisateur par ID",
+                "description": "Met à jour les détails de l'utilisateur par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de l'utilisateur à mettre à jour."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès de la requête"
+                    },
+                    "404": {
+                        "description": "Utilisateur non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Supprimer l'utilisateur par ID",
+                "description": "Supprime l'utilisateur par son ID.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "ID de l'utilisateur à supprimer."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Utilisateur supprimé avec succès"
+                    },
+                    "404": {
+                        "description": "Utilisateur non trouvé"
+                    }
+                }
+            }
+        }
+    }
+}
